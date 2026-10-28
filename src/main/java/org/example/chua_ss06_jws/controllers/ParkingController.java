@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.chua_ss06_jws.models.dto.req.TicketRequest;
 import org.example.chua_ss06_jws.models.dto.res.TicketResponse;
 import org.example.chua_ss06_jws.models.services.ParkingService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -36,7 +37,7 @@ public class ParkingController {
     }
 
     @GetMapping("/history")
-    public ResponseEntity<TicketResponse> histories(
+    public ResponseEntity<Page<TicketResponse>> histories(
             @RequestParam(name = "licensePlate") String licensePlate,
             @RequestParam(name = "formDate") LocalDateTime fromDate,
             @RequestParam(name = "toDate") LocalDateTime toDate,
